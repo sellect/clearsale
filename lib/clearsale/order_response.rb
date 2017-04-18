@@ -15,23 +15,17 @@ module Clearsale
     attr_reader :order_id, :status, :score
 
     def self.build_from_send_order(package)
-      new(package.fetch(:package_status, {}))
+      new(package.fetch('Orders', {}).first)
     end
 
     def self.build_from_update(package)
       new(package.fetch(:clear_sale, {}))
     end
 
-    def initialize(hash)
-      response = hash.fetch(:orders, {}).fetch(:order, {})
-
-      if response.blank?
-        @status = :inexistent_order
-      else
-        @order_id = response[:id]
-        @score    = response[:score].to_f
-        @status   = STATUS_MAP[response[:status]]
-      end
+    def initialize(response)
+      @order_id = response['ID']
+      @score    = response['Score'].to_f
+      @status   = STATUS_MAP[response['Status']]
     end
 
     def approved?
