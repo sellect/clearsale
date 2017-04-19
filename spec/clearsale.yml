@@ -1,0 +1,5 @@
+api_key: 'your api key'
+client_id: 'client id'
+client_secret: 'secret'
+endpoint: 'https://sandbox.clearsale.com.br/api'
+analysis_location: 'USA'

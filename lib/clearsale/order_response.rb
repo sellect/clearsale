@@ -19,7 +19,7 @@ module Clearsale
     end
 
     def self.build_from_update(package)
-      new(package.fetch(:clear_sale, {}))
+      new(package.fetch('Orders', {}).first)
     end
 
     def initialize(response)
@@ -46,6 +46,10 @@ module Clearsale
 
     def inexistent_order?
       @status == :inexistent_order
+    end
+
+    def waiting?
+      @status == :waiting
     end
   end
 end

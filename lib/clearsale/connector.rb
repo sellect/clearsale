@@ -24,7 +24,7 @@ module Clearsale
 
     private
     def api_end_points
-      "https://sandbox.clearsale.com.br/api"
+      Clearsale.configure.endpoint
     end
 
   end

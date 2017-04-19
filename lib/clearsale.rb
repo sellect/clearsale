@@ -26,24 +26,4 @@ module Clearsale
     configuration(&block)
   end
 
-  def self.api_key
-    configuration.api_key = api_key
-  end
-
-  def self.client_id
-    configuration.client_id = client_id
-  end
-
-  def self.client_secret
-    configuration.client_secret = client_secret
-  end
-
-  def self.endpoint
-    configuration.endpoint = endpoint
-  end
-
-  def self.analysis_location
-    configuration.analysis_location = analysis_location
-  end
-
 end

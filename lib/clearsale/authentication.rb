@@ -17,10 +17,9 @@ module Clearsale
         when Net::HTTPOK
           decoded_json = Parser.decode_json(response.read_body)
 
-          token = decoded_json.fetch('Token')['Value']
-          Clearsale.configure.token  = token
-
-          return token
+          token = decoded_json.fetch('Token')
+          Clearsale.configure.token  = token['Value']
+          return Object.new(token)
         when Net::HTTPClientError,  Net::HTTPInternalServerError
           raise response.message
         end
