@@ -18,8 +18,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
   s.add_dependency 'builder', '~> 3.2'
-  s.add_dependency 'hashie', '~> 3.4.6'
-  s.add_dependency 'httparty', '~> 0.13.5'
   s.add_dependency 'multi_json'
 
   s.add_development_dependency 'vcr'
@@ -27,5 +25,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'factory_girl'
   s.add_development_dependency 'byebug'
-  s.add_development_dependency 'psych',         '~> 2.0', '>= 2.0.2'
 end
