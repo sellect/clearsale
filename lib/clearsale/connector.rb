@@ -1,7 +1,6 @@
 require 'json'
 require 'uri'
 require 'net/http'
-require 'byebug'
 
 module Clearsale
   class Connector
