@@ -62,3 +62,20 @@ def order
     "SessionId"=>"Apr 18th 2017 Tue 06:52 PM UTC"
   }
 end
+
+def expected_request_body_for_send_order
+  { 
+    "Apikey"           => "your api key", 
+    "LoginToken"       => "test token", 
+    "AnalysisLocation" =>"USA", 
+    "Orders" => [ order ]
+  }
+end
+def expected_request_body_for_get_order_status
+  { 
+    "Apikey"           => "your api key", 
+    "LoginToken"       => "test token", 
+    "AnalysisLocation" =>"USA", 
+    "Orders" => ['TEST702520515']
+  }
+end
