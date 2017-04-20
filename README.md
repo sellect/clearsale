@@ -1,4 +1,4 @@
-= Clearsale
+# Clearsale
 
 ## Setup
   Add the gem to your `Gemfile`.
@@ -140,6 +140,7 @@
 
 
   ### Get order status 
+  ```ruby
   order_id = '1234'
   response = Clearsale::Analysis.get_order_status(order_id)
 
@@ -160,4 +161,5 @@
   # => :manual_rejection
   # => :cancelled
   # => :fraud
+  ```
 
