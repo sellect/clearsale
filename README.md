@@ -55,14 +55,14 @@
   After setup you should be able to use a few endpoints to Clearsale fraud service. if you need a new endpoint, feel free to fork this gem, add support for it, add specs and do a pull request.
 
   ### Get Authentication token request
-    ```ruby
+  ```ruby
       response = Clearsale::Authentication.request_auth
       # Access the details of the response
       response.Status
-    ```
+  ```
 
   ### Sample Order hash to be sent to gem. You can update
-    ```ruby
+ ```ruby
       {
         "ID"            => "TEST702520515", 
         "Date"          => "2017-03-01T13:48:08-0800", 
@@ -125,22 +125,21 @@
         }], 
         "SessionId"=>"Apr 18th 2017 Tue 06:52 PM UTC"
       }
-
-  ```
+```
   
   ### Send Order 
-  ```ruby
+```ruby
     response = Clearsale::Analysis.send_order(order)
 
     # Access the details of the response
     response.order_id
     response.score
     response.status
-  ```
+```
 
 
   ### Get order status 
-  ```ruby
+```ruby
   order_id = '1234'
   response = Clearsale::Analysis.get_order_status(order_id)
 
@@ -161,5 +160,5 @@
   # => :manual_rejection
   # => :cancelled
   # => :fraud
-  ```
+```
 
