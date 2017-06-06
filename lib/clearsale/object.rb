@@ -1,5 +1,4 @@
 require 'json'
-require 'ostruct'
 
 module Clearsale
   class Object < OpenStruct

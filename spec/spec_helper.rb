@@ -1,11 +1,7 @@
 require 'rubygems'
-require 'bundler'
-Bundler.setup(:default)
-require 'clearsale'
+require 'bundler/setup'
+Bundler.require(:default, :development)
 require 'vcr'
-require 'savon'
-
-HTTPI.log = false
 
 Dir["./spec/support/**/*.rb"].each {|f| require f}
 
@@ -18,6 +14,6 @@ end
 
 RSpec.configure do |config|
   config.mock_with :rspec
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
 end
-
-Clearsale::Config.log = false
