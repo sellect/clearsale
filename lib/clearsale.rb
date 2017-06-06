@@ -1,13 +1,27 @@
-require 'active_support/all'
+require 'clearsale/analysis'
+require 'clearsale/configuration'
+require 'clearsale/parser'
+require 'clearsale/authentication'
+require 'clearsale/connector'
+require 'clearsale/object'
+require 'clearsale/order'
+require 'clearsale/order_response'
 
 module Clearsale
-  extend ActiveSupport::Autoload
+  def self.configuration
+    @@_configuration ||= Clearsale::Configuration.new
+    yield @@_configuration if block_given?
 
-  autoload :Analysis,              'clearsale/analysis'
-  autoload :Config,                'clearsale/config'
-  autoload :Connector,             'clearsale/connector'
-  autoload :LoggerFormatterFilter, 'clearsale/logger_formatter_filter'
-  autoload :Object,                'clearsale/object'
-  autoload :Order,                 'clearsale/order'
-  autoload :OrderResponse,         'clearsale/order_response'
+     @@_configuration
+  end
+
+  def self.configuration=(configuration)
+    raise ArrgumentError, 'Expect a Clearsale::Configuration instance' unless configuration.kind_of?(Configuration)
+    @@_configuration = configuration
+  end
+
+  def self.configure(&block)
+    configuration(&block)
+  end
+
 end
