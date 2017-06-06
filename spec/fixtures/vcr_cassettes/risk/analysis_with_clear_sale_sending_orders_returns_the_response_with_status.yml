@@ -5,7 +5,7 @@ http_interactions:
     uri: https://sandbox.clearsale.com.br/api/auth/login
     body:
       encoding: UTF-8
-      string: '{"Login":{"ApiKey":"your api key","ClientID":"client id","ClientSecret":"secret"}}'
+      string: '{"Login":{"ApiKey":"5C3E91A7-D450-4977-A377-894C92A877C3","ClientID":"bomberg","ClientSecret":"dJyXgGfwO3"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -37,20 +37,20 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 19 Apr 2017 20:25:29 GMT
+      - Tue, 06 Jun 2017 15:09:42 GMT
       Content-Length:
       - '83'
     body:
       encoding: UTF-8
-      string: '{"Token":{"Value":"ORFZXRO9","ExpirationDate":"2017-04-20T19:29:53.3057814+00:00"}}'
+      string: '{"Token":{"Value":"641XQE7S","ExpirationDate":"2017-06-07T14:22:05.9062956+00:00"}}'
     http_version: 
-  recorded_at: Wed, 19 Apr 2017 20:25:29 GMT
+  recorded_at: Tue, 06 Jun 2017 15:09:43 GMT
 - request:
     method: post
     uri: https://sandbox.clearsale.com.br/api/order/send
     body:
       encoding: UTF-8
-      string: '{"Apikey":"5C3E91A7-D450-4977-A377-894C92A877C3","LoginToken":"ORFZXRO9","AnalysisLocation":"USA","Orders":[{"ID":"TEST702520515","Date":"2017-03-01T13:48:08-0800","Email":"sagar@sellect.com","TotalItems":1995.0,"TotalOrder":19.95,"TotalShipping":0.0,"IP":"69.193.133.38","Currency":"usd","Payments":[{"Date":"2017-03-01T13:48:08-0800","Type":1,"CardType":3,"CardEndNumber":"4242","CardHolderName":"Sagar
+      string: '{"Apikey":"5C3E91A7-D450-4977-A377-894C92A877C3","LoginToken":"641XQE7S","AnalysisLocation":"USA","Orders":[{"ID":"TEST702520223","Date":"2017-03-01T13:48:08-0800","Email":"sagar@sellect.com","TotalItems":1995.0,"TotalOrder":19.95,"TotalShipping":0.0,"IP":"69.193.133.38","Currency":"usd","Payments":[{"Date":"2017-03-01T13:48:08-0800","Type":1,"CardType":3,"CardEndNumber":"4242","CardHolderName":"Sagar
         Rathi","CardExpirationDate":"09/20","Amount":19.95}],"BillingData":{"ID":372,"Type":1,"Name":"Sagar
         Rathi","Address":{"AddressLine1":"3206 29th street #4B","AddressLine2":"4B","City":"Astoria","State":"NY","Country":"UNITED
         STATES","ZipCode":"11106"},"Phones":[{"Type":6,"AreaCode":"474","Number":"140296"}]},"ShippingData":{"ID":371,"Type":1,"Name":"Sagar
@@ -89,12 +89,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 19 Apr 2017 20:25:32 GMT
+      - Tue, 06 Jun 2017 15:10:14 GMT
       Content-Length:
       - '116'
     body:
       encoding: UTF-8
-      string: '{"Orders":[{"ID":"TEST702520515","Status":"NVO","Score":""}],"TransactionID":"e8c0fc8a-fd6a-4927-bbcd-af16d844e22a"}'
+      string: '{"Orders":[{"ID":"TEST702520223","Status":"NVO","Score":""}],"TransactionID":"f450e531-cd12-4c85-bf0f-2edab766715d"}'
     http_version: 
-  recorded_at: Wed, 19 Apr 2017 20:25:32 GMT
+  recorded_at: Tue, 06 Jun 2017 15:10:14 GMT
 recorded_with: VCR 3.0.3

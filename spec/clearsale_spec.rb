@@ -50,5 +50,10 @@ module Clearsale
         Clearsale.configure.analysis_location = 'BRA'
       }.to change(Clearsale.configure, :analysis_location).to('BRA')
     end
+
+    after do 
+      Clearsale.configure.analysis_location = 'USA'
+      Clearsale.configure.api_key = 'your api key'
+    end
   end
 end

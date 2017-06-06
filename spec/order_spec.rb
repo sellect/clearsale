@@ -15,7 +15,7 @@ module Clearsale
     end
 
     it '.build_orders_request_body for get order status' do
-      request_body = Clearsale::Order.build_orders_request_body('TEST702520515')
+      request_body = Clearsale::Order.build_orders_request_body('TEST702520223')
       expect(request_body).to  be_kind_of(Hash)
       expect(request_body).to  have_key('LoginToken')
       expect(request_body['Orders']).to  be_kind_of(Array)

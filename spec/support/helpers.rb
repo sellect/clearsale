@@ -1,6 +1,6 @@
 def order
   {
-    "ID"            => "TEST702520515", 
+    "ID"            => "TEST702520223", 
     "Date"          => "2017-03-01T13:48:08-0800", 
     "Email"         => "sagar@sellect.com", 
     "TotalItems"    => 1995.0, 
@@ -76,6 +76,6 @@ def expected_request_body_for_get_order_status
     "Apikey"           => "your api key", 
     "LoginToken"       => "test token", 
     "AnalysisLocation" =>"USA", 
-    "Orders" => ['TEST702520515']
+    "Orders" => ['TEST702520223']
   }
 end
