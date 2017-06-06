@@ -4,27 +4,24 @@ require 'json'
 
 module Clearsale
   class Authentication
+    attr_accessor :token
     def self.connector
       @connector = Connector.new('auth/login')
     end
 
     def self.request_auth
-      begin
-        body = { "Login" => auth_params }
-        response = connector.do_request(body)
+      body = { "Login" => auth_params }
+      response = connector.do_request(body)
 
-        case response
-        when Net::HTTPOK
-          decoded_json = Parser.decode_json(response.read_body)
+      case response
+      when Net::HTTPOK
+        decoded_json = Parser.decode_json(response.read_body)
 
-          token = decoded_json.fetch('Token')
-          Clearsale.configure.token  = token['Value']
-          return Object.new(token)
-        when Net::HTTPClientError,  Net::HTTPInternalServerError
-          raise response.message
-        end
-      rescue Timeout::Error => error
-        response.mesage
+        @token = decoded_json.fetch('Token')
+        Clearsale.configure.token  = token['Value']
+        Object.new(token)
+      when Net::HTTPClientError,  Net::HTTPInternalServerError
+        raise response.message
       end
     end
 
@@ -35,14 +32,6 @@ module Clearsale
         "ClientID"     => Clearsale.configure.client_id,
         "ClientSecret" => Clearsale.configure.client_secret
       }
-    end
-
-    def self.parse_response(response)
-      JSON.parse(response)
-    end
-
-    def self.clear_connector
-      @connector = nil
     end
   end
 end

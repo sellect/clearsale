@@ -39,10 +39,10 @@ module Clearsale
       }.to change(Clearsale.configure, :client_secret).to('sellect sellect')
     end
 
-    it 'overrides the configuration endpoint' do
+    it 'overrides the configuration test_mode' do
       expect {
-        Clearsale.configure.endpoint = 'https://sellect.com/api'
-      }.to change(Clearsale.configure, :endpoint).to('https://sellect.com/api')
+        Clearsale.configure.test_mode = false
+      }.to change(Clearsale.configure, :test_mode).to(false)
     end
 
     it 'overrides the configuration analysis_location' do

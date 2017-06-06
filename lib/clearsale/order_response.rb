@@ -15,11 +15,7 @@ module Clearsale
     attr_reader :order_id, :status, :score
 
     def self.build_from_send_order(package)
-      new(package.fetch('Orders', {}).first)
-    end
-
-    def self.build_from_update(package)
-      new(package.fetch('Orders', {}).first)
+      new(package.fetch('Orders', []).first)
     end
 
     def initialize(response)
