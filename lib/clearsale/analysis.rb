@@ -1,3 +1,4 @@
+require 'byebug'
 module Clearsale
   class Analysis
 
@@ -11,9 +12,11 @@ module Clearsale
 
     def self.send_request(order, action)
       Clearsale::Authentication.request_auth
-      connector    = Clearsale::Connector.new("order/#{action}")
-      request_body = Clearsale::Order.build_orders_request_body(order)
-      response     = connector.do_request(request_body)
+      connector       = Clearsale::Connector.new("order/#{action}")
+      clearsale_order = Clearsale::Order.new(order)
+      request_body    = clearsale_order.request_body
+      
+      response        = connector.do_request(request_body)
       OrderResponse.build_from_send_order(Clearsale::Parser.decode_json(response.read_body))
     end
   end

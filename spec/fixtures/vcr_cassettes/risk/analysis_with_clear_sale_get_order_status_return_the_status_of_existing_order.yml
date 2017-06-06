@@ -5,7 +5,7 @@ http_interactions:
     uri: https://sandbox.clearsale.com.br/api/auth/login
     body:
       encoding: UTF-8
-      string: '{"Login":{"ApiKey":"5C3E91A7-D450-4977-A377-894C92A877C3","ClientID":"bomberg","ClientSecret":"dJyXgGfwO3"}}'
+      string: '{"Login":{"ApiKey":"your api key","ClientID":"bomberg","ClientSecret":"dJyXgGfwO3"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -37,20 +37,20 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 06 Jun 2017 15:23:30 GMT
+      - Tue, 06 Jun 2017 19:01:07 GMT
       Content-Length:
       - '83'
     body:
       encoding: UTF-8
-      string: '{"Token":{"Value":"641XQE7S","ExpirationDate":"2017-06-07T14:22:05.9062956+00:00"}}'
+      string: '{"Token":{"Value":"QB9RBEOF","ExpirationDate":"2017-06-07T18:26:05.0186631+00:00"}}'
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 15:23:30 GMT
+  recorded_at: Tue, 06 Jun 2017 19:01:08 GMT
 - request:
     method: post
     uri: https://sandbox.clearsale.com.br/api/order/get
     body:
       encoding: UTF-8
-      string: '{"Apikey":"5C3E91A7-D450-4977-A377-894C92A877C3","LoginToken":"641XQE7S","AnalysisLocation":"USA","Orders":["TEST702520515"]}'
+      string: '{"Apikey":"your api key","LoginToken":"QB9RBEOF","AnalysisLocation":"USA","Orders":["TEST702520225"]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -82,12 +82,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 06 Jun 2017 15:24:00 GMT
+      - Tue, 06 Jun 2017 19:01:38 GMT
       Content-Length:
       - '68'
     body:
       encoding: UTF-8
-      string: '{"Orders":[{"ID":"TEST702520515","Status":"AMA","Score":"89.7100"}]}'
+      string: '{"Orders":[{"ID":"TEST702520225","Status":"AMA","Score":"99.9900"}]}'
     http_version: 
-  recorded_at: Tue, 06 Jun 2017 15:24:01 GMT
+  recorded_at: Tue, 06 Jun 2017 19:01:38 GMT
 recorded_with: VCR 3.0.3

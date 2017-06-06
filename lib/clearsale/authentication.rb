@@ -6,7 +6,7 @@ module Clearsale
   class Authentication
     attr_accessor :token
     def self.connector
-      @connector = Connector.new('auth/login')
+      @connector = ::Clearsale::Connector.new('auth/login')
     end
 
     def self.request_auth

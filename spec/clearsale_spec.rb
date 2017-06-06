@@ -21,7 +21,7 @@ module Clearsale
       }.to change(Clearsale, :configuration).to(configuration)
     end
 
-    it 'overrides the configuration api key' do
+    it 'overrides the configuration 5C3E91A7-D450-4977-A377-894C92A877C3' do
       expect {
         Clearsale.configure.api_key = 'test'
       }.to change(Clearsale.configure, :api_key).to('test')
@@ -54,6 +54,7 @@ module Clearsale
     after do 
       Clearsale.configure.analysis_location = 'USA'
       Clearsale.configure.api_key = 'your api key'
+      Clearsale.configure.test_mode = true
     end
   end
 end

@@ -8,7 +8,7 @@ module Clearsale
     end
 
     it 'token should set in configuration' do
-      expect (Clearsale.configuration.token).should eq 'GX7XALXD'
+      expect (Clearsale.configuration.token).should eq 'L5TJIQX4'
     end
   end
 end
