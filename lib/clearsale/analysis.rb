@@ -1,4 +1,3 @@
-require 'byebug'
 module Clearsale
   class Analysis
 
