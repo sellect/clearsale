@@ -15,7 +15,6 @@ module Clearsale
     attr_reader :order_id, :status, :score
 
     def self.build_from_send_order(package)
-      byebug
       new(package.fetch('Orders', []).first)
     end
 
