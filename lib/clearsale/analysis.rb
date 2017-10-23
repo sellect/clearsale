@@ -10,13 +10,14 @@ module Clearsale
     end
 
     def self.send_request(order, action)
-      Clearsale::Authentication.request_auth
-      connector       = Clearsale::Connector.new("order/#{action}")
-      clearsale_order = Clearsale::Order.new(order)
+      ::Clearsale::Authentication.request_auth
+      connector       = ::Clearsale::Connector.new("order/#{action}")
+      clearsale_order = ::Clearsale::Order.new(order)
       request_body    = clearsale_order.request_body
-      
+
       response        = connector.do_request(request_body)
-      OrderResponse.build_from_send_order(Clearsale::Parser.decode_json(response.read_body))
+
+      OrderResponse.build_from_send_order(::Clearsale::Parser.decode_json(response.read_body), order)
     end
   end
 end
