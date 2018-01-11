@@ -15,9 +15,19 @@ module Clearsale
     attr_reader :order_id, :status, :score
 
     def self.build_from_send_order(package, order)
-      order_number = order.is_a?(String) ? order : order.first['ID']
-      
-      new(package.fetch('Orders', [{'ID' => order_number, 'Status' => 'ERR', 'Score' => 0.0 }]).first)
+      order_number = case order
+      when String
+        order
+      when Array
+        order.first.present? ? order.first['ID'] : ''
+      when Hash
+        order['ID']
+      end
+      query    = {'ID' => order_number, 'Status' => 'ERR', 'Score' => 0.0 }
+      packages = package.fetch('Orders', [query])
+      response = packages.first
+
+      new(response)
     end
 
     def initialize(response)
