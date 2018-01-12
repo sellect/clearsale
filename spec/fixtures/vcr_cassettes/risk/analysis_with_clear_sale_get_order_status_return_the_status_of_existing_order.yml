@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.clearsale.com.br/api/auth/login
+    body:
+      encoding: UTF-8
+      string: '{"Login":{"ApiKey":"your api key","ClientID":"bomberg","ClientSecret":"dJyXgGfwO3"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - sandbox.clearsale.com.br
+      Content-Type:
+      - text/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Jun 2017 19:01:07 GMT
+      Content-Length:
+      - '83'
+    body:
+      encoding: UTF-8
+      string: '{"Token":{"Value":"QB9RBEOF","ExpirationDate":"2017-06-07T18:26:05.0186631+00:00"}}'
+    http_version: 
+  recorded_at: Tue, 06 Jun 2017 19:01:08 GMT
+- request:
+    method: post
+    uri: https://sandbox.clearsale.com.br/api/order/get
+    body:
+      encoding: UTF-8
+      string: '{"Apikey":"your api key","LoginToken":"QB9RBEOF","AnalysisLocation":"USA","Orders":["TEST702520225"]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - sandbox.clearsale.com.br
+      Content-Type:
+      - text/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 06 Jun 2017 19:01:38 GMT
+      Content-Length:
+      - '68'
+    body:
+      encoding: UTF-8
+      string: '{"Orders":[{"ID":"TEST702520225","Status":"AMA","Score":"99.9900"}]}'
+    http_version: 
+  recorded_at: Tue, 06 Jun 2017 19:01:38 GMT
+recorded_with: VCR 3.0.3

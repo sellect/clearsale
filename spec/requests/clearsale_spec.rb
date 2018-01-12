@@ -4,68 +4,24 @@ require 'clearsale'
 require 'webmock/rspec'
 
 describe 'Risk Analysis with ClearSale' do
-  let!(:vcs_params) { {:match_requests_on => [:method, :uri, :headers]} }
 
-  describe 'sending orders' do
-    it "returns the package response" do
-      VCR.use_cassette('clearsale_send_orders', vcs_params) do
-        response = Clearsale::Analysis.send_order(order, payment, user)
-
-        expect(response).to be_manual_analysis
-        expect(response.score).to be_within(0.01).of(6.04)
-        expect(response.order_id).to eq('AA22BB11')
-      end
+  describe 'sending orders', :vcr do
+    it 'returns the response with status' do  
+      response = Clearsale::Analysis.send_order(order)
+      expect(response).to be_waiting
+      expect(response.order_id).to eq('TEST702520225')
+      expect(response.score).to be_between(0.0, 100.00)
     end
   end
 
-  describe "updating order status" do
-    context "existing order" do
-      it "returns the package response" do
-        VCR.use_cassette('clearsale_get_order_status', vcs_params) do
-          response = Clearsale::Analysis.get_order_status('AA22BB11')
-
-          expect(response).to be_manual_analysis
-          expect(response.score).to be_within(0.01).of(6.04)
-          expect(response.order_id).to eq('AA22BB11')
-        end
-      end
+  describe 'get order status', :vcr do
+    before do 
+      Clearsale.configuration.token = 'L5TJIQX4'
     end
-
-    context "missing order" do
-      it "returns the package response" do
-        VCR.use_cassette('clearsale_get_order_status_missing', vcs_params) do
-          order = double('Order', :id => 1234567890)
-          response = Clearsale::Analysis.get_order_status(order)
-
-          expect(response).to be_inexistent_order
-        end
-      end
-    end
-  end
-
-  describe "setting the environment" do
-    context "when CLEARSALE_ENV is production" do
-      it "should access production url" do
-        VCR.use_cassette('clearsale_get_order_status_production', vcs_params) do
-          Clearsale::Analysis.clear_connector
-          ENV["CLEARSALE_ENV"] = 'production'
-          Clearsale::Analysis.get_order_status('AA22BB11')
-
-          expect(a_request(:post, "https://www.clearsale.com.br/integracaov2/service.asmx")).to have_been_made
-        end
-      end
-    end
-
-    context "when CLEARSALE_ENV isn't production" do
-      it "should access production url" do
-        VCR.use_cassette('clearsale_get_order_status', vcs_params) do
-          Clearsale::Analysis.clear_connector
-          ENV["CLEARSALE_ENV"] = 'any'
-          Clearsale::Analysis.get_order_status('AA22BB11')
-
-          expect(a_request(:post, "http://homologacao.clearsale.com.br/Integracaov2/Service.asmx")).to have_been_made
-        end
-      end
+    it 'return the status of existing order' do
+      response = Clearsale::Analysis.get_order_status('TEST702520224')
+      expect(response).to be_manual_analysis
+      expect(response.score).to be_between(0.0, 100.00)
     end
   end
 end

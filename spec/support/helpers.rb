@@ -1,81 +1,81 @@
-# encoding: utf-8
-
-def product
-  {
-    :id => 5555,
-    :name => 'Pogobol',
-    :category => { :id => 7777, :name => 'Disney' }
-  }
-end
-
-def item1
-  {
-    :product => product,
-    :price => 5.00,
-    :quantity => 2,
-  }
-end
-
-def billing_address
-  {
-    :street_name => 'Billing Street',
-    :number => '123',
-    :complement => '',
-    :neighborhood => 'Rhode Island',
-    :city => 'Mayland',
-    :state => 'Maryland',
-    :postal_code => '00100-011'
-  }
-end
-
-def shipping_address
-  {
-    :street_name => 'Shipping Street',
-    :number => '123',
-    :complement => '',
-    :neighborhood => 'Rhode Island',
-    :city => 'Mayland',
-    :state => 'Maryland',
-    :postal_code => '00100-011'
-  }
-end
-
-def user
-  {
-    :email     => 'petergriffin@abc.com',
-    :id        => 8888,
-    :cpf       => '248.783.463-37',
-    :full_name => 'Peter Löwenbräu Griffin',
-    :birthdate => 40.years.ago,
-    :phone     => '11 8001 1002',
-    :gender    => 'm',
-    :last_sign_in_ip => '127.0.0.1',
-  }
-end
-
 def order
   {
-    :id => 'AA22BB11',
-    :paid_at => 2.seconds.ago,
-    :billing_address => billing_address,
-    :shipping_address => shipping_address,
-    :installments => 3,
-    :total_items => 20.00,
-    :total_order => 25.00,
-    :items_count => 3,
-    :created_at => Time.current,
-    :user => user,
-    :order_items => [item1, item1],
+    "ID"            => "TEST702520225", 
+    "Date"          => "2017-03-01T13:48:08-0800", 
+    "Email"         => "sagar@sellect.com", 
+    "TotalItems"    => 1995.0, 
+    "TotalOrder"    => 19.95, 
+    "TotalShipping" => 0.0,
+    "IP"            => "69.193.133.38", 
+    "Currency"      => "usd", 
+    "Payments"      => [{
+      "Date"               =>"2017-03-01T13:48:08-0800", 
+      "Type"               =>1, 
+      "CardType"           =>3, 
+      "CardEndNumber"      => "4242", 
+      "CardHolderName"     => "Sagar Rathi", 
+      "CardExpirationDate" => "09/20", 
+      "Amount"             => 19.95
+    }], 
+    "BillingData"=> {
+      "ID"      => 372, 
+      "Type"    =>1, 
+      "Name"    => "Sagar Rathi", 
+      "Address" => {
+        "AddressLine1" => "3206 29th street #4B", 
+        "AddressLine2" => "4B", 
+        "City"         => "Astoria", 
+        "State"        => "NY", 
+        "Country"      => "UNITED STATES", 
+        "ZipCode"      => "11106" 
+      }, 
+      "Phones" =>[{
+        "Type"     => 6, 
+        "AreaCode" => "474", 
+        "Number"   =>"140296"
+      }]
+    }, 
+    "ShippingData"=> {
+      "ID"      => 371, 
+      "Type"    => 1, 
+      "Name"    => "Sagar Rathi", 
+      "Address" => {
+        "AddressLine1" => "3206 29th street #4B", 
+        "AddressLine2" => "4B", 
+        "City"         => "Astoria", 
+        "State"        => "NY", 
+        "Country"      => "UNITED STATES", 
+        "ZipCode"      => "11106" 
+      }, 
+      "Phones" => [{
+        "Type"     => 6, 
+        "AreaCode" => "474", 
+        "Number"   => "140296" 
+      }]
+    }, 
+    "Items" => [{
+      "ProductId"    => 7, 
+      "ProductTitle" => "Navy Hopsack Blazer", 
+      "Price"        =>1995.0, 
+      "Quantity" =>1 
+    }], 
+    "SessionId"=>"Apr 18th 2017 Tue 06:52 PM UTC"
   }
 end
 
-def payment
-  {
-    :card_holder => 'Petter L Griffin',
-    :card_number => '1234432111112222',
-    :card_expiration => '05/2012',
-    :card_security_code => '123',
-    :acquirer => 'visa',
-    :amount => 50.00,
+def expected_request_body_for_send_order
+  { 
+    "Apikey"           => "your api key", 
+    "LoginToken"       => "test token", 
+    "AnalysisLocation" =>"USA", 
+    "Orders" => [ order ]
+  }
+end
+def expected_request_body_for_get_order_status
+  { 
+    "Apikey"           => "your api key", 
+    "LoginToken"       => "test token", 
+    "AnalysisLocation" =>"USA", 
+    "Orders" => ['TEST702520224']
   }
 end
